@@ -18,13 +18,16 @@ class QuizViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        viTimer.frame.size.width = view.frame.size.width
+        setupView()
+    }
+    
+    private func setupView() {
+       viTimer.frame.size.width = view.frame.size.width
         UIView.animate(withDuration: 60.0, delay: 0, options: .curveLinear, animations: {
             self.viTimer.frame.size.width = 0 // depois de 60s o width será zero
         }) { (success) in //código que acontece depois que a animação termina

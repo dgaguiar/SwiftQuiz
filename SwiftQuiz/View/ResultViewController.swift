@@ -20,18 +20,24 @@ class ResultViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        lbAnswered.text = "Perguntas respondidas: \(totalAnswers)"
-        lbCorrect.text = "Perguntas corretas: \(totalCorrectAnswers)"
-        lbWrong.text = "Perguntas erradas: \(totalAnswers - totalCorrectAnswers)"
+        setup()
         
-        let score = totalCorrectAnswers*100/totalAnswers
-        lbScore.text = "\(score)%"
         // Do any additional setup after loading the view.
     }
-   
-    @IBAction func close(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
+    
+    private func setup() {
+        lbAnswered.text = "Perguntas respondidas: \(totalAnswers)"
+        lbCorrect.text = "Perguntas corretas: \(totalCorrectAnswers)"
+        
+        if totalAnswers == 0 {
+            lbWrong.isHidden = true
+            lbScore.font = UIFont(name: "Arial", size: 24)
+            lbScore.text = "Poxa você nem tentou 😢"
+        } else {
+            lbWrong.text = "Perguntas erradas: \(totalAnswers - totalCorrectAnswers)"
+            let score = totalCorrectAnswers*100/totalAnswers
+            lbScore.text = "\(score)%"
+        }
     }
     
 }

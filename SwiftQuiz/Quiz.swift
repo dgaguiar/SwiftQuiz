@@ -25,6 +25,6 @@ class Quiz {
     }
     
     deinit {
-        print("liberou quiz da memória")
+//        print("liberou quiz da memória")
     }
 }
